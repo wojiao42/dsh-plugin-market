@@ -1,0 +1,3 @@
+- insert:
+    - id: plugin-market
+      name: '@local/dsh-plugin-market'
