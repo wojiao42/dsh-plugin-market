@@ -6,7 +6,7 @@
 并用 **Harness 官方插件管理器** 安装 / 启停 / 卸载到当前 profile —— 不依赖 `dsh` CLI，
 也不接管官方插件管理器的任何一步。
 
-[![version](https://img.shields.io/badge/version-0.1.0-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
+[![version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## 截图
@@ -97,22 +97,22 @@ dsh plugin --profile web add github:wojiao42/dsh-plugin-market
 想让 profile 长期指向源码目录，就登记成 pnpm 的 `link:` 协议（`file:` 会把目录复制进 `node_modules`，之后改源码不生效）：
 
 ```json
-"dependencies": { "@local/dsh-plugin-market": "link:<插件目录>" },
-"dsh": { "profile": { "bundles": [ "…", "@local/dsh-plugin-market" ] } }
+"dependencies": { "dsh-plugin-market": "link:<插件目录>" },
+"dsh": { "profile": { "bundles": [ "…", "dsh-plugin-market" ] } }
 ```
 
-包名是 `@local/dsh-plugin-market`（**历史原因**：一开始只是本地自用件，名字没跟着仓库改）。它**不需要发布到 npm**，也不会发布：从 GitHub 或本机路径装即可。
+包名是 `dsh-plugin-market`。它**不需要发布到 npm**：从 GitHub 或本机路径装即可。
 
 ### 改完代码怎么生效
 
-profile 的 `node_modules/@local/dsh-plugin-market` 指向源码目录（junction / 符号链接），源码即安装件，**不需要任何同步脚本**。
+profile 的 `node_modules/dsh-plugin-market` 指向源码目录（junction / 符号链接），源码即安装件，**不需要任何同步脚本**。
 
 - `client.js`：宿主按文件版本热更新客户端 bundle，**刷新页面**即可看到新界面。
 - `index.js`（host 半边）：**必须重启 Harness** 才加载新路由。
 
 ### 卸载
 
-从 profile `package.json` 的 `dsh.profile.bundles` 与 `dependencies` 里去掉，再 `pnpm remove @local/dsh-plugin-market`。
+从 profile `package.json` 的 `dsh.profile.bundles` 与 `dependencies` 里去掉，再 `pnpm remove dsh-plugin-market`。
 
 ## 自测
 
@@ -144,6 +144,7 @@ node test/live-check.mjs                                # 联网核对上游数�
 
 最新在最上。
 
+- **v0.2.0**（2026-11-08）：包名由 `@local/dsh-plugin-market` 改为 `dsh-plugin-market`（可直接从 GitHub 装，不再带 `@local` 前缀）；功能无变化。
 - **v0.1.0**（2026-11-08）：首个公开版本：左侧栏 + 设置分区的插件市场面板、五个页签、精选目录与 sitemap 全量索引合并（`scope=all`）、安装 / 启停 / 卸载全部走官方 `pluginManager`。
 
 ## 收录状态
