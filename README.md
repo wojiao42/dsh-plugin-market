@@ -6,7 +6,7 @@
 并用 **Harness 官方插件管理器** 安装 / 启停 / 卸载到当前 profile —— 不依赖 `dsh` CLI，
 也不接管官方插件管理器的任何一步。
 
-[![version](https://img.shields.io/badge/version-0.2.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
+[![version](https://img.shields.io/badge/version-0.3.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## 截图
@@ -97,22 +97,22 @@ dsh plugin --profile web add github:wojiao42/dsh-plugin-market
 想让 profile 长期指向源码目录，就登记成 pnpm 的 `link:` 协议（`file:` 会把目录复制进 `node_modules`，之后改源码不生效）：
 
 ```json
-"dependencies": { "dsh-plugin-market": "link:<插件目录>" },
-"dsh": { "profile": { "bundles": [ "…", "dsh-plugin-market" ] } }
+"dependencies": { "dsh-market-panel": "link:<插件目录>" },
+"dsh": { "profile": { "bundles": [ "…", "dsh-market-panel" ] } }
 ```
 
-包名是 `dsh-plugin-market`。它**不需要发布到 npm**：从 GitHub 或本机路径装即可。
+包名是 `dsh-market-panel`（**不能叫 dsh-plugin-market**：与官方 @deepseek-ai/dsh-plugin-market 撞名，会让官方插件页在启动时失败）。它**不需要发布到 npm**：从 GitHub 或本机路径装即可。
 
 ### 改完代码怎么生效
 
-profile 的 `node_modules/dsh-plugin-market` 指向源码目录（junction / 符号链接），源码即安装件，**不需要任何同步脚本**。
+profile 的 `node_modules/dsh-market-panel` 指向源码目录（junction / 符号链接），源码即安装件，**不需要任何同步脚本**。
 
 - `client.js`：宿主按文件版本热更新客户端 bundle，**刷新页面**即可看到新界面。
 - `index.js`（host 半边）：**必须重启 Harness** 才加载新路由。
 
 ### 卸载
 
-从 profile `package.json` 的 `dsh.profile.bundles` 与 `dependencies` 里去掉，再 `pnpm remove dsh-plugin-market`。
+从 profile `package.json` 的 `dsh.profile.bundles` 与 `dependencies` 里去掉，再 `pnpm remove dsh-market-panel`。
 
 ## 自测
 
@@ -143,6 +143,10 @@ node test/live-check.mjs                                # 联网核对上游数�
 ## 版本
 
 最新在最上。
+
+- **v0.3.1**（2026-11-08）：**本地化命名空间改名** `pluginMarket` → `dshMarketPanel`。真正的启动失败原因在这里：官方 `@deepseek-ai/dsh-client-ui-plugin-market` 的 locale 命名空间也叫 `pluginMarket`，两个插件同时启用时 `ctx.locale.register()` 失败 → 官方插件页在 web 启动阶段激活失败（`web boot: 1 entry did not activate`）。已用「独立 DSH_HOME + dsh web + 无头 Chrome」复现并在修复后复测通过（官方实验性插件市场组合包 + 本插件同时启用 OK）。
+
+- **v0.3.0**（2026-11-08）：**包名改成 `dsh-market-panel`**。原来的 `dsh-plugin-market` 与官方 `@deepseek-ai/dsh-plugin-market` 撞名：两个一起启用时，官方插件页的客户端（`@deepseek-ai/dsh-client-ui-plugin-market`）在 web 启动阶段激活失败，整个界面起不来（`web boot: 1 entry did not activate`）。已用「独立 DSH_HOME + dsh web + 无头 Chrome」复现并验证修复；GitHub 仓库名保持不变，安装命令也不变。
 
 - **v0.2.1**（2026-11-08）：修包名重命名后的客户端模块 id —— `client.js` 里 `__ModuleLoader__.load({ id })` 还写着旧包名 `@local/dsh-plugin-market`，导致 web 启动时 factory 重复注册、整个界面起不来（`web boot: 1 entry did not activate`）。
 

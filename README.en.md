@@ -9,7 +9,7 @@ A left-sidebar **Plugin Market** panel: browse the dsh-plugin.org community cata
 enable, disable or uninstall bundles into the current profile through the **official plugin
 manager** — no `dsh` CLI, no profile guessing.
 
-[![version](https://img.shields.io/badge/version-0.2.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
+[![version](https://img.shields.io/badge/version-0.3.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## What it does
@@ -63,7 +63,7 @@ dsh plugin --profile web add github:wojiao42/dsh-plugin-market
   `sidebar.panellist`, `main` and `settings.section`. The target DSH must support bundle patches
   (`dsh.bundle.patch`) and the `pluginManager` remote (`inspect` / `installBundle` /
   `setBundleEnabled` / `removeBundle`).
-- The package name is `dsh-plugin-market`; it is not published to npm and does not need to be —
+- The package name is `dsh-market-panel` (it must not be `dsh-plugin-market`: that collides with the official @deepseek-ai/dsh-plugin-market and breaks the official Plugins page at boot); it is not published to npm and does not need to be —
   install it from GitHub or a local path.
 - `package.json` declares no `engines`. The Host half is plain ESM using global `fetch` (Node 18+),
   with no native modules and no build step; tested locally on Node v24.21.0 (Windows).

@@ -1,3 +1,9 @@
 - insert:
-    - id: plugin-market
-      name: 'dsh-plugin-market'
+    # id 不能叫 plugin-market：官方实验性组合包
+    # @deepseek-ai/dsh-experimental-plugin-market-bundle 也用这个行 id，
+    # 包名也不能叫 dsh-plugin-market：官方包同名，会让官方客户端在启动时失败。
+    # 两个一起启用时行 id 冲突，会把官方 @deepseek-ai/dsh-plugin-market 与
+    # @deepseek-ai/dsh-client-ui-plugin-market 挤掉 → web 启动报
+    # 「@deepseek-ai/dsh-client-ui-plugin-market: failed」。
+    - id: dsh-market-panel
+      name: 'dsh-market-panel'

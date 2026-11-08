@@ -10,15 +10,22 @@
  * catalog stats, search + long-form category chips, a segmented sort control
  * with direction toggle, and single-column full-width cards.
  *
- * @module dsh-plugin-market/client
+ * @module dsh-market-panel/client
  */
 window.__ModuleLoader__.load({
-  id: 'dsh-plugin-market',
+  id: 'dsh-market-panel',
   factory: (require) => {
     const React = require('react')
     const h = React.createElement
 
-    const NS = 'pluginMarket'
+    /**
+ * 本地化命名空间。
+ *
+ * 不能叫 `pluginMarket`：官方 @deepseek-ai/dsh-client-ui-plugin-market 用的就是这个名字，
+ * 两个插件同时启用时 `ctx.locale.register()` 重名注册会抛错 → 官方插件页在启动阶段激活失败
+ * （web boot: @deepseek-ai/dsh-client-ui-plugin-market: failed，整个界面起不来）。
+ */
+const NS = 'dshMarketPanel'
     const PANEL_ID = 'plugin-market'
     const CATALOG_URL = '/plugin-market/catalog'
     const STATS_URL = '/plugin-market/stats'

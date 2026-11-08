@@ -16,15 +16,21 @@
  *   Both answer with x-plugin-market-fetched-at / x-plugin-market-stale headers
  *   and cache to disk under $DSH_HOME/plugin-market.
  *
- * @module dsh-plugin-market
+ * @module dsh-market-panel
  */
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { homedir } from 'node:os'
 import { dirname, join } from 'node:path'
 
-/** Cordis plugin name. */
-export const name = 'plugin-market'
+/**
+ * Cordis plugin name。
+ *
+ * 不能叫 `plugin-market`，也不能叫 `dsh-plugin-market`：官方 @deepseek-ai/dsh-plugin-market 用的就是这两个名字，
+ * 两个一起启用时服务名冲突，官方那侧的客户端（@deepseek-ai/dsh-client-ui-plugin-market）
+ * 会在 web 启动时报 `failed`，整个界面起不来。
+ */
+export const name = 'dsh-market-panel'
 
 /** Serve from disk for this long before asking the origin again. */
 const CATALOG_TTL_MS = 6 * 60 * 60 * 1000
