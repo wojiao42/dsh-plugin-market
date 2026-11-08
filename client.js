@@ -10,10 +10,10 @@
  * catalog stats, search + long-form category chips, a segmented sort control
  * with direction toggle, and single-column full-width cards.
  *
- * @module @local/dsh-plugin-market/client
+ * @module dsh-plugin-market/client
  */
 window.__ModuleLoader__.load({
-  id: '@local/dsh-plugin-market',
+  id: 'dsh-plugin-market',
   factory: (require) => {
     const React = require('react')
     const h = React.createElement

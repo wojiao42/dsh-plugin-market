@@ -1,6 +1,6 @@
 {
   "name": "dsh-plugin-market",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "左侧栏社区插件市场：浏览 dsh-plugin.org 目录，并通过官方插件管理器安装/卸载（不依赖 dsh CLI）",
   "type": "module",
   "scripts": {

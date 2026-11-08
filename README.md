@@ -6,7 +6,7 @@
 并用 **Harness 官方插件管理器** 安装 / 启停 / 卸载到当前 profile —— 不依赖 `dsh` CLI，
 也不接管官方插件管理器的任何一步。
 
-[![version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
+[![version](https://img.shields.io/badge/version-0.2.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## 截图
@@ -143,6 +143,8 @@ node test/live-check.mjs                                # 联网核对上游数�
 ## 版本
 
 最新在最上。
+
+- **v0.2.1**（2026-11-08）：修包名重命名后的客户端模块 id —— `client.js` 里 `__ModuleLoader__.load({ id })` 还写着旧包名 `@local/dsh-plugin-market`，导致 web 启动时 factory 重复注册、整个界面起不来（`web boot: 1 entry did not activate`）。
 
 - **v0.2.0**（2026-11-08）：包名由 `@local/dsh-plugin-market` 改为 `dsh-plugin-market`（可直接从 GitHub 装，不再带 `@local` 前缀）；功能无变化。
 - **v0.1.0**（2026-11-08）：首个公开版本：左侧栏 + 设置分区的插件市场面板、五个页签、精选目录与 sitemap 全量索引合并（`scope=all`）、安装 / 启停 / 卸载全部走官方 `pluginManager`。

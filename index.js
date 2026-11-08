@@ -16,7 +16,7 @@
  *   Both answer with x-plugin-market-fetched-at / x-plugin-market-stale headers
  *   and cache to disk under $DSH_HOME/plugin-market.
  *
- * @module @local/dsh-plugin-market
+ * @module dsh-plugin-market
  */
 
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'

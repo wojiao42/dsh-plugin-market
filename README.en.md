@@ -9,7 +9,7 @@ A left-sidebar **Plugin Market** panel: browse the dsh-plugin.org community cata
 enable, disable or uninstall bundles into the current profile through the **official plugin
 manager** — no `dsh` CLI, no profile guessing.
 
-[![version](https://img.shields.io/badge/version-0.2.0-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
+[![version](https://img.shields.io/badge/version-0.2.1-blue)](https://github.com/wojiao42/dsh-plugin-market/releases)
 [![license](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ## What it does
