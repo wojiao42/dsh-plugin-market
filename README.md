@@ -155,7 +155,11 @@ node test/live-check.mjs                                # 联网核对上游数�
 
 ## 收录状态
 
-尚未投稿到 [awesome-dsh-plugin](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin)，也尚未提交到 dsh-plugin.org —— 没有 PR 号，两个社区目录里目前都还没有它的条目，装它只能按上面「安装」里的方式。
+**awesome-dsh-plugin**：已投稿 → PR [#13628](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/pull/13628)（2026-11-09 开，CI 全绿，等待维护者合并）。合并前目录里还查不到本插件。
+
+**dsh-plugin.org**：尚未提交（站点没有公开投稿入口），目前站内没有条目。
+
+在两者收录之前，装它只能按上面「安装」里的方式（GitHub / 本机路径 / 插件管理器自定义安装）。
 
 ## 许可
 
